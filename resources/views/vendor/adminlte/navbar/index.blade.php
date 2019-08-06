@@ -41,9 +41,10 @@
                     </button>
                     <h4 class="modal-title">Add Menu</h4>
                 </div>
-                <form method="post" id="createOrUpdateNavbar" action="{{route('admin.navbar.createOrUpdate')}}">
+                <form method="post" id="createOrUpdateForm" action="{{route('admin.navbar.createOrUpdate')}}">
+                    @csrf
+                     <span class="hiddenField"></span>
                     <div class="modal-body">
-
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="name">Menu Name</label>
@@ -91,7 +92,6 @@
             $('#navbar-modal-btn').on('click', function () {
                 $('.modal-title').html('Add Navbar');
                 $('.createOrUpdateBtn').html('save');
-                $('#createOrUpdateNavbar').attr('method', 'POST');
                 $('#is_parent').html('');
                 $.ajax({
                     url: '{{route('admin.navbar.is_parent')}}',
@@ -113,10 +113,10 @@
                 $('.modal-title').html('Update Navbar');
                 $('.createOrUpdateBtn').html('Update');
                 $('#navbar-modal').modal('show');
-                $('#createOrUpdateNavbar').attr('method', 'PATCH')
+                $('.hiddenField').html('<input type="hidden" name="_method" value="PATCH">')
             })
 
         });
-    </script>
+    </script>g
 
 @stop

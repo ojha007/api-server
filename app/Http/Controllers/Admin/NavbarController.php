@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Navbar;
+use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class NavbarController extends Controller
@@ -38,7 +39,14 @@ class NavbarController extends Controller
         $navbars = Navbar::all();
         return response()->json($navbars);
     }
-    public  function createOrUpdate(){
+    public  function createOrUpdate(Request $request){
+        if($request->isMethod('post')){
+            dd('POST');
+        }
+        else{
+            dd('PATCH');
+        }
+
 
     }
 

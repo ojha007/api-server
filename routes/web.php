@@ -12,6 +12,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         $route->get('index', ['as' => 'index', 'uses' => 'NavbarController@index']);
         $route->get('data-table', ['as' => 'data-table', 'uses' => 'NavbarController@dataTable']);
         $route->get('is_parent', ['as' => 'is_parent', 'uses' => 'NavbarController@is_parent']);
-        $route->get('createOrUpdate', ['as' => 'createOrUpdate', 'uses' => 'NavbarController@createOrUpdate']);
+        $route->match(['POST', 'PATCH'], 'create-update', ['as' => 'createOrUpdate', 'uses' => 'NavbarController@createOrUpdate']);
     });
 });
