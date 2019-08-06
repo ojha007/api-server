@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="311px" height="277px" viewBox="0 0 311 277" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Calendar</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="-7.317%" x2="50%" y2="111.644%" id="linearGradient-1">
+            <stop stop-color="#4ED5C0" offset="0%"></stop>
+            <stop stop-color="#0374A1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Calendar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ddc-calendar-(2)" transform="translate(25.000000, 14.000000)" fill-rule="nonzero">
+            <g id="Group" fill="url(#linearGradient-1)">
+                <circle id="Oval" opacity="0.15" cx="131.5" cy="131.5" r="131.5"></circle>
+                <circle id="Oval" opacity="0.699" cx="131.5" cy="132.5" r="110.5"></circle>
+            </g>
+            <g id="Group" stroke-linejoin="round" transform="translate(56.000000, 42.000000)" stroke="#1E1853" stroke-width="3">
+                <path d="M0,0 L0,121.055 C0,131.517 8.56,140 19.123,140 L125.877,140 C136.441,140 145,131.517 145,121.055 L145,0 L0,0 Z" id="Shape" fill="#FFFFFF"></path>
+                <polygon id="Shape" fill="#E56587" stroke-linecap="round" points="0 41 145 41 145 0 0 0"></polygon>
+                <path d="M20,140 L164.889,140 C174.89,140 183,131.941 183,122 L38.111,122 C38.111,131.941 30.001,140 20,140 Z" id="Shape" fill="#E2E8E9" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
