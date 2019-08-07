@@ -12,6 +12,7 @@ class Navbar extends Model
         'name',
         'slug',
         'parent_id',
+        'display_order',
     ];
 
 }
