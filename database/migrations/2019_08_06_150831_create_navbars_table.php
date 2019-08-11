@@ -18,6 +18,7 @@ class CreateNavbarsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('parent_id');
+            $table->float('display_order');
             $table->timestamps();
         });
     }

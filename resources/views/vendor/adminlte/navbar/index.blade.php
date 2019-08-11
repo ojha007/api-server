@@ -22,7 +22,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Is-Parent</th>
+                    <th>Parent_ID</th>
+                    <th>Display Order</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -43,19 +44,26 @@
                 </div>
                 <form method="post" id="createOrUpdateForm" action="{{route('admin.navbar.createOrUpdate')}}">
                     @csrf
-                     <span class="hiddenField"></span>
+                    <span class="hiddenField"></span>
                     <div class="modal-body">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="name">Menu Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                                <input type="text" class="form-control" id="name" placeholder="Enter name" name="name"
+                                       required>
                             </div>
                             <div class="form-group">
                                 <label for="is_parent">Select Parent</label>
-                                <select id="is_parent" class="form-control">
+                                <select id="is_parent" class="form-control" name="parent_id">
                                     <option value="0">No Parent</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="display_order">Display Order</label>
+                                <input type="number" min="1" step="0.1" name="display_order" id="display_order"
+                                       class="form-control" required placeholder="Enter display order">
+                            </div>
+
                         </div>
 
                     </div>
@@ -72,6 +80,52 @@
 @section('adminlte_js')
     <script>
         $(document).ready(function () {
+            function fetchParent() {
+                $.ajax({
+                    url: '{{route('admin.navbar.is_parent')}}',
+                    method: 'GET',
+                    success: function (res) {
+                        $('#is_parent').append('<option value="0">No Parent</option>');
+                        $.each(res, function (i, item) {
+                            $('#is_parent').append('<option value="' + item.id + '">' + item.name + '</option>')
+                        });
+                        for (let i = 0; i <= res; i++) {
+                        }
+                        $('#navbar-modal').modal('show');
+                    }
+                })
+            }
+
+            function fetchDetail(id) {
+                $.ajax({
+                    url: '{{route('admin.navbar.detail')}}',
+                    method: 'GET',
+                    data: {
+                        id: id,
+                    },
+                    success: function (res) {
+                        $('#name').val(res.name);
+                        $('#is_parent').val(res.parent_id);
+                        $('#display_order').val(res.display_order);
+                    }
+                })
+            }
+
+            function deleteNavbar(slug) {
+                $.ajax({
+                    url: '{{route('admin.navbar.delete')}}',
+                    method: 'DELETE',
+
+                    data: {
+                        slug: slug,
+                        '_token': '{{csrf_token()}}'
+                    },
+                    success: function () {
+                        window.location.reload();
+                    }
+                })
+            }
+
             $('#navbar').DataTable({
                 processing: true,
                 serverSide: true,
@@ -82,7 +136,8 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
-                    {data: 'parent_id', name: 'Is_parent'},
+                    {data: 'parent_id', name: 'parent_id'},
+                    {data: 'display_order', name: 'display_order'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
 
@@ -93,30 +148,28 @@
                 $('.modal-title').html('Add Navbar');
                 $('.createOrUpdateBtn').html('save');
                 $('#is_parent').html('');
-                $.ajax({
-                    url: '{{route('admin.navbar.is_parent')}}',
-                    method: 'GET',
-                    success: function (res) {
-                        $.each(res, function (i, item) {
-                            $('#is_parent').append('<option value="' + item.id + '">' + item.name + '</option>')
-                        });
-                        for (let i = 0; i <= res; i++) {
-
-                        }
-                        $('#navbar-modal').modal('show');
-                    }
-                })
+                fetchParent();
             });
 
             $(' table').on('click', '.editNavbar', function () {
-                let slug = $(this).data('title');
+                let id = $(this).data('id');
+                fetchDetail(id);
                 $('.modal-title').html('Update Navbar');
                 $('.createOrUpdateBtn').html('Update');
                 $('#navbar-modal').modal('show');
-                $('.hiddenField').html('<input type="hidden" name="_method" value="PATCH">')
-            })
+                $('.hiddenField').html('<input type="hidden" name="_method" value="PATCH">' +
+                    '<input type="hidden" name="id" value="' + id + '">');
+                $('#is_parent').html('');
+                fetchParent();
+            }).on('click', '.deleteNavbar', function () {
+                let slug = $(this).data('title');
+                confirm('Are You Sure You want to delete ?');
+                deleteNavbar(slug);
+
+            });
+
 
         });
-    </script>g
+    </script>
 
 @stop
