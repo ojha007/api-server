@@ -15,7 +15,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function register()
     {
         View::composer(
-            'frontend.*', 'App\Composers\MainComposer'
+            '*', 'App\Composers\MainComposer'
         );
 
     }

@@ -3,13 +3,21 @@
 
 namespace App\Composers;
 
+use App\Services\NavbarService;
 use Illuminate\View\View;
 
 class MainComposer
 {
-    public function compose(View $view){
+    protected $navbars;
 
-       $view->with('navbars' ,2333);
+    public function __construct(NavbarService $navbarService)
+    {
+        $this->navbars = $navbarService;
+    }
+
+    public function compose(View $view)
+    {
+        $view->with('navbars', $this->navbars->navbarRootMenu());
     }
 
 }

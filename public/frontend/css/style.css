@@ -1,0 +1,9 @@
+.navbar-collapse .navbar-nav > .nav-item > .nav-link > a,
+.navbar-collapse .navbar-nav > .nav-item > .nav-link:hover,
+.navbar-collapse .navbar-nav > .nav-item > .nav-link:focus {
+    background-color: rgb(231, 231, 231);
+    color: rgb(85, 85, 85);
+}
+li.dropdown:hover > .dropdown-menu {
+    display: block;
+}
