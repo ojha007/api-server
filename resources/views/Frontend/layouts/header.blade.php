@@ -5,20 +5,20 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto nav ">
             @foreach($navbars as $item)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{count($item->children) >0 ? '' :url($item->slug)}}">{{$item->name}}</a>
-                </li>
-                @if(count($item->children)>0)
-                    <li class="dropdown">
-                        <ul class="dropdown-menu">
-                            @foreach($item->children as $child)
-                                <a class="dropdown-item" href="{{url('/category', $child->slug)}}">{{$child->name}}</a>
-                            @endforeach
+                <li class="dropdown">
+                    <a class="nav-link" data-toggle="dropdown"
+                       href="{{count($item->children) >0 ? '' :url($item->slug)}}">
+                        {{$item->name}}
+                    </a>
+                    @if(count($item->children)>0)
+                        <ul class="dropdown-menu multi-level">
+                            @include('Frontend.layouts.child-header',['children' => $item->children,'level'=>1])
                         </ul>
-                    </li>
-                @endif
+
+                    @endif
+                </li>
             @endforeach
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -27,5 +27,40 @@
         </form>
     </div>
 </nav>
+<style>
+
+    .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        left: 100%;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px;
+        border-radius: 0 6px 6px 6px;
+    }
+
+    .dropdown:hover>.dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-submenu:hover>.dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-submenu>a:after {
+        display: block;
+        float: right;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-left-color: #ccc;
+        margin-top: 5px;
+        margin-right: -10px;
+    }
+
+    .dropdown-submenu:hover>a:after {
+        border-left-color: #fff;
+    }
+</style>
 
 
