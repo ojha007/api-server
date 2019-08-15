@@ -15,12 +15,48 @@ li.dropdown:hover > .dropdown-menu {
     overflow: hidden;
 }
 
-.owl-carousel {
-    display: none;
+.border-radius-12 {
+    border-radius: 12px;
+}
+
+.padding-left-2 {
+    padding-left: 2px;
+}
+
+.padding-right-2 {
+    padding-right: 2px;
+}
+
+.height-180 {
+    height: 180px;
+}
+
+.image-full-w-h {
     width: 100%;
-    -webkit-tap-highlight-color: transparent;
-    position: relative;
-    z-index: 1
+    height: 100%;
+}
+
+#carousel .item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: grab;
+    cursor: -webkit-grab;
+}
+
+/* Styling Pagination*/
+.owl-theme .owl-controls .owl-page span {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    background: none;
+    border: 1px solid #000;
+}
+
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span {
+    background: #888;
+    border: 1px solid #888;
 }
 
 * {
@@ -29,7 +65,7 @@ li.dropdown:hover > .dropdown-menu {
     outline: none;
     border: none;
     text-decoration: none;
-    color: #f2f2f2;
+
 }
 
 .main-menu {
@@ -160,11 +196,10 @@ a:hover {
 
 .footer .col h1 {
     margin: 0;
-    padding: 0;
     font-family: inherit;
     font-size: 12px;
     line-height: 17px;
-    padding: 20px 0px 5px 0px;
+    padding: 20px 0 5px 0;
     color: rgba(255, 255, 255, 0.2);
     font-weight: normal;
     text-transform: uppercase;
@@ -189,6 +224,17 @@ a:hover {
     -moz-transition: .2s;
 }
 
+.owl-carousel-item {
+    height: 369px;
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+.full-height {
+    height: 100%;
+}
+
 .social ul li {
     display: inline-block;
     padding-right: 5px !important;
@@ -204,6 +250,79 @@ a:hover {
 .clearfix {
     clear: both;
 }
+.owl-carousel-caption{
+    padding: 20px 15px;
+    background: #716d6d5c;
+    opacity: .9;
+    z-index: 10;
+    margin-top: -100px;
+}
+a{
+    text-decoration: none;
+
+}
+a:hover{
+    text-decoration: none;
+
+}
+.blog-caption{
+    height: 100px;
+    position: relative;
+    margin-top: -73px;
+    text-align: center;
+    background: #0a122e5c;
+    opacity: .9;
+    z-index: 10
+}
+
+img:hover{
+    content: '';
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    cursor: pointer;
+    display: block;
+    opacity: 0.5;
+    transition: all 1s;
+    background:rgba(0,0,0,0.6);
+}
+.blog-image{
+    overflow: hidden;
+    height: 100%;
+}
+.blog-content{
+    border: 1px solid #e5e5e5;
+    box-shadow: 1px 1px 10px #989696;
+    border-radius: 12px;
+}
+.latest-blog-text{
+    color: black;
+    font-size: 13px;
+}
+.item{
+    border: 1px solid #e5e5e5;
+    box-shadow: 1px 1px 10px #989696;
+    border-radius: 12px;
+}
+.latest-blog-title{
+    font-size: 22px;
+    line-height: 28px;
+    margin-bottom: 5px;
+    color: black;
+}
+.latest-blog-meta-tag{
+    color: black;
+    font-size: 12px;
+}
+.page-title   h5 span{
+    background-color:#2f1e2e;
+    color: white;
+    font-size: 20px;
+}
+
+
 
 @media only screen and (min-width: 1280px) {
     .contain {
@@ -235,19 +354,8 @@ a:hover {
     .footer .col ul li {
         font-size: 13px;
     }
+
 }
 
-@media only screen and (max-width: 500px) {
-    .footer .col {
-        width: 50%;
-    }
 
-    .footer .col h1 {
-        font-size: 14px;
-    }
-
-    .footer .col ul li {
-        font-size: 13px;
-    }
-}
 

@@ -1,12 +1,10 @@
 <?php
-Route::get('/', function () {
-    return view('Frontend.app');
-})->name('home');
 
-
+Route::group(['namespace' =>'Frontend'],function($route){
+    $route->get('/','HomeController@index')->name('home');
+});
 Auth::routes();
 
-//Route::get('/', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function ($router) {
     $router->group(['prefix' => 'navbar', 'as' => 'navbar.'], function ($route) {
         $route->get('index', ['as' => 'index', 'uses' => 'NavbarController@index']);

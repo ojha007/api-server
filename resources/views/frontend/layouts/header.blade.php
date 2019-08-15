@@ -9,7 +9,7 @@
             <ul class='core-menu'>
                 @foreach($navbars as $item)
                     <li>
-                        <a href="{{count($item->children) >0 ? '#' :url($item->slug)}}">
+                        <a href="{{count($item->children) >0 ? '#' :url($item->slug)}}" >
                             {{$item->name}}
                             @if(count($item->children)>0)
                                 <span class='toggle'></span>
@@ -40,11 +40,12 @@
                 $(".burger-1, .burger-2, .burger-3").toggleClass("open");
                 $(".core-menu").slideToggle("fast");
             });
-            $('.owl-carousel').owlCarousel({
+            $('#owl-carousel').owlCarousel({
                 loop:true,
-                margin:10,
-                responsiveClass:true,
-                width:100
+                responsiveClass: true,
+                slideSpeed : 100,
+                items:1,
+                autoPlay : true,
             })
         });
     </script>

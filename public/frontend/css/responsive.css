@@ -118,5 +118,16 @@
     .footer .col {
         width: 100%;
     }
+    .footer .col {
+        width: 50%;
+    }
+
+    .footer .col h1 {
+        font-size: 14px;
+    }
+
+    .footer .col ul li {
+        font-size: 13px;
+    }
 
 }
